@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore the latest trends in cloud computing with Amazon Web Services at InnovationHive Blog."
+    />
+    <title>InnovationHive Blog</title>
+     <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7.png') }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* General Styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+      }
+body {
+  background-color: #0e0e0e; /* dark background */
+  color: #e0e0e0; /* light text */
+  
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Navbar Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #000000;
+    padding: 15px 30px;
+    color: white;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.header-scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  flex: 1;
+  width: 180px;
+  left: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo img {
+    height: 150px;
+    width: auto;
+}
+
+/* Navigation styling */
+.nav-links {
+   flex: 2;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+}
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+.nav-links li a:hover {
+    color: #4facfe;
+}
+/* Navigation base styles */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  padding: 10px 0;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  list-style: none; /* ✅ Removes the dots */
+}
+
+/* Dropdown item styling */
+.dropdown-menu li {
+  padding: 8px 20px;
+}
+
+/* Links inside dropdown */
+.dropdown-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background: #333;
+  border-radius: 4px;
+}
+
+/* Show dropdown on hover with animation */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(10px); /* Slide down */
+}
+      /* Mobile Menu Toggle */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      /* Blog Section */
+      .blog-section {
+        padding: 30px 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        flex: 1;
+      }
+
+      .blog-section h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 15px;
+        color: #60b8e4;
+        line-height: 1.2;
+      }
+
+      .blog-section .subtitle {
+        font-size: 1rem;
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+    
+      .blog-post {
+        background-color: #1f1f1f;
+        color: #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .blog-post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 20px;
+      }
+
+      .blog-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #60b8e4;
+        line-height: 1.3;
+      }
+
+      .blog-content h3 {
+        font-size: 1.3rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #60b8e4;
+      }
+
+      .blog-content h4 {
+        font-size: 1.1rem;
+        margin-top: 15px;
+        margin-bottom: 8px;
+        color: #60b8e4;
+      }
+
+      .blog-content .meta {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .blog-content .author {
+        color: #60b8e4;
+        font-weight: bold;
+      }
+
+      .blog-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .blog-content ul {
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+
+      .blog-content ul li {
+        margin-bottom: 10px;
+      }
+
+      .blog-content .author-signature {
+        font-style: italic;
+        color:#60b8e4;
+        margin-top: 20px;
+      }
+
+      .blog-content .linkedin-link {
+        display: inline-block;
+        margin-top: 15px;
+        color: #60b8e4;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .blog-content .linkedin-link:hover {
+        color: #00bfff;
+      }
+
+      .blog-content .linkedin-link i {
+        margin-right: 8px;
+      }
+
+      .key-takeaways {
+        color: #000000;
+        background-color: #60b8e4;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 25px;
+      }
+
+      .key-takeaways h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      .key-takeaways ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .key-takeaways li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .key-takeaways li:before {
+        content: "•";
+        color: #004466;
+        font-weight: bold;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
+      }
+
+      /* Footer */
+      .dark-footer {
+  background-color: #0b0b0b;
+  color: #eee;
+  padding: 50px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  border-bottom: 1px solid #222;
+  padding-bottom: 30px;
+}
+
+.footer-column h4, .footer-column h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #4facfe;
+}
+
+.social-icons a {
+  color: #aaa;
+  font-size: 18px;
+  margin-right: 12px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #4facfe;
+}
+
+.footer-column p {
+  margin: 8px 0;
+}
+
+.footer-column i {
+  margin-right: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+      /* Animation for Fade-in */
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .blog-section h1 {
+          font-size: 1.8rem;
+        }
+
+        .blog-content h2 {
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 15px;
+        }
+
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo-container {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 15px;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li {
+          width: 100%;
+          padding: 5px 0;
+        }
+
+        .blog-section {
+          padding: 20px 10px;
+        }
+
+        .blog-section h1 {
+          font-size: 1.5rem;
+        }
+
+        .blog-content {
+          padding: 15px;
+        }
+
+        .blog-content h2 {
+          font-size: 1.2rem;
+        }
+
+        .blog-content h3 {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo img {
+          height: 40px;
+        }
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        .blog-section h1 {
+          font-size: 1.3rem;
+        }
+
+        .blog-section .subtitle {
+          font-size: 0.9rem;
+        }
+
+        .blog-content .meta {
+          font-size: 0.8rem;
+        }
+
+        .blog-content p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+    <!-- Font Awesome for LinkedIn icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="logo-container">
+          <div class="logo animate-slide-in-left">
+      <img src="./static/images/LOGO_1.png" alt="InnovateHive Logo" />
+      </div>
+          <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li class="dropdown animate-slide-in-left">
+            <a href="/#services">Services</a>
+           
+          </li>
+          <li><a href="/#blog">Blog</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Blog Section -->
+    <section class="blog-section">
+      <div class="blog-container">
+        <h1>
+          Amazon Web Services (AWS): The Ultimate Cloud Computing Platform
+        </h1>
+        <p class="subtitle">
+          Explore the latest trends, insights, and innovations in technology and
+          design.
+        </p>
+
+        <!-- AWS Blog Post -->
+        <div class="blog-post">
+          <div class="blog-image">
+            <img
+              src="./static/images/B-1.jpg"
+              alt="AWS Blog Image"
+            />
+          </div>
+          <div class="blog-content">
+            <h2>
+              Amazon Web Services (AWS): The Ultimate Cloud Computing Platform
+            </h2>
+            <p class="meta">
+              Published by
+              <span class="author">Om Raosaheb Ghorpade</span>
+            </p>
+            <p>
+              Amazon Web Services (AWS) is the world’s leading cloud computing
+              platform, providing a wide range of cloud-based services to
+              businesses, developers, and individuals. It offers reliable,
+              scalable, and cost-effective solutions for computing, storage,
+              databases, AI, security, and more. AWS is used by startups,
+              enterprises, and governments worldwide to build and scale
+              applications efficiently.
+            </p>
+            <h3>Why AWS?</h3>
+            <ul>
+              <li>Market leader in cloud computing</li>
+              <li>Offers 200+ fully featured services</li>
+              <li>High security, scalability, and global presence</li>
+              <li>Cost-effective pay-as-you-go pricing model</li>
+            </ul>
+            <h3>AWS History</h3>
+            <p>
+              AWS was officially launched in 2006 as a subsidiary of Amazon,
+              initially offering Simple Storage Service (S3) and Elastic Compute
+              Cloud (EC2). Over the years, AWS has expanded into AI, IoT,
+              machine learning, and more. Some key milestones include:
+            </p>
+            <ul>
+              <li>
+                <strong>2010:</strong> Netflix migrates to AWS, setting a trend
+                for enterprises.
+              </li>
+              <li>
+                <strong>2014:</strong> AWS Lambda introduces serverless
+                computing.
+              </li>
+              <li>
+                <strong>2019:</strong> AWS Outposts bridges cloud and
+                on-premises infrastructure.
+              </li>
+              <li>
+                <strong>Present:</strong> AWS leads the cloud market with 30%+
+                share.
+              </li>
+            </ul>
+            <h3>AWS Global Infrastructure</h3>
+            <p>
+              AWS operates 100+ Availability Zones across 30+ regions, ensuring
+              high availability and low latency. The infrastructure includes:
+            </p>
+            <ul>
+              <li>
+                <strong>Regions:</strong> Independent data center locations
+                worldwide.
+              </li>
+              <li>
+                <strong>Availability Zones (AZs):</strong> Multiple data centers
+                within a region.
+              </li>
+              <li>
+                <strong>Edge Locations:</strong> Power AWS CloudFront (CDN) for
+                fast content delivery.
+              </li>
+            </ul>
+            <h3>Key Benefits:</h3>
+            <ul>
+              <li>Global reach: Deploy applications closer to users.</li>
+              <li>Redundancy & reliability: Minimal downtime.</li>
+              <li>Scalability: Expand resources on demand.</li>
+            </ul>
+            <h3>AWS Core Features</h3>
+            <p>
+              AWS provides several key features that make it the most trusted
+              cloud provider:
+            </p>
+            <ul>
+              <li>
+                <strong>Scalability & Elasticity:</strong> Auto Scaling ensures
+                resources scale automatically.
+              </li>
+              <li>
+                <strong>Security & Compliance:</strong> Advanced encryption,
+                IAM, and compliance certifications.
+              </li>
+              <li>
+                <strong>Flexible Pricing:</strong> Pay-as-you-go, Reserved
+                Instances, and Spot Instances.
+              </li>
+              <li>
+                <strong>High Availability:</strong> Built-in redundancy across
+                multiple AZs.
+              </li>
+              <li>
+                <strong>Integration:</strong> Seamless integration with DevOps
+                tools, databases, and APIs.
+              </li>
+            </ul>
+            <h3>AWS Services Overview</h3>
+            <h4>Compute</h4>
+            <ul>
+              <li>
+                <strong>Amazon EC2:</strong> Virtual servers for running
+                applications.
+              </li>
+              <li>
+                <strong>AWS Lambda:</strong> Serverless computing to run code
+                without managing servers.
+              </li>
+              <li>
+                <strong>Amazon ECS/EKS:</strong> Container orchestration
+                services.
+              </li>
+            </ul>
+            <h4>Storage</h4>
+            <ul>
+              <li>
+                <strong>Amazon S3:</strong> Object storage for scalable data
+                storage.
+              </li>
+              <li>
+                <strong>Amazon EBS:</strong> Block storage for EC2 instances.
+              </li>
+              <li>
+                <strong>Amazon Glacier:</strong> Low-cost archival storage.
+              </li>
+            </ul>
+            <h4>Database</h4>
+            <ul>
+              <li>
+                <strong>Amazon RDS:</strong> Managed relational database
+                service.
+              </li>
+              <li>
+                <strong>Amazon DynamoDB:</strong> Fully managed NoSQL database.
+              </li>
+              <li>
+                <strong>Amazon Aurora:</strong> High-performance MySQL and
+                PostgreSQL-compatible database.
+              </li>
+            </ul>
+            <h4>Networking & Content Delivery</h4>
+            <ul>
+              <li>
+                <strong>Amazon VPC:</strong> Private network for AWS resources.
+              </li>
+              <li>
+                <strong>Amazon CloudFront:</strong> Content delivery network
+                (CDN).
+              </li>
+              <li>
+                <strong>AWS Direct Connect:</strong> Private connectivity to
+                AWS.
+              </li>
+            </ul>
+            <h4>Security & Identity</h4>
+            <ul>
+              <li>
+                <strong>AWS IAM:</strong> Manage user access and permissions.
+              </li>
+              <li>
+                <strong>AWS Shield:</strong> DDoS protection for applications.
+              </li>
+              <li>
+                <strong>AWS KMS:</strong> Encryption key management service.
+              </li>
+            </ul>
+            <h4>Monitoring & Management</h4>
+            <ul>
+              <li>
+                <strong>Amazon CloudWatch:</strong> Monitor AWS resources in
+                real-time.
+              </li>
+              <li>
+                <strong>AWS CloudTrail:</strong> Track API calls and actions.
+              </li>
+            </ul>
+            <h3>Conclusion</h3>
+            <p>
+              AWS has revolutionized cloud computing, offering businesses,
+              developers, and enterprises a reliable, scalable, and
+              cost-efficient platform to build and innovate. With a vast range
+              of services spanning compute, storage, databases, AI, and
+              security, AWS caters to diverse industry needs, empowering
+              organizations to scale seamlessly and optimize performance.
+            </p>
+            <p>
+              From startups launching their first applications to global
+              enterprises managing mission-critical workloads, AWS remains the
+              preferred choice due to its robust global infrastructure, flexible
+              pricing models, and continuous innovation. As cloud adoption
+              continues to grow, AWS is set to lead the way, shaping the future
+              of technology with cutting-edge advancements in AI, edge
+              computing, and sustainability.
+            </p>
+            <p>
+              Whether you're looking to optimize costs, enhance security, or
+              accelerate digital transformation, AWS provides the tools and
+              capabilities to drive success in an ever-evolving tech landscape.
+            </p>
+            <p class="author-signature">- Om Raosaheb Ghorpade</p>
+            <a
+              href="https://www.linkedin.com/in/omghorpade99"
+              target="_blank"
+              class="linkedin-link"
+            >
+              <i class="fab fa-linkedin"></i> Connect with me on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+  <footer class="dark-footer">
+  <div class="footer-inner">
+    <div class="footer-column">
+      <h4>Find Us On</h4>
+      <div class="social-icons">
+        <a href="https://x.com/innovatehive7"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/innovatehive.in/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/innovatehive-tech-solution/"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h4>About Us</h4>
+      <ul>
+        <li><a href="#about">Know Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#blog">Blogs</a></li>
+        <li><a href="#contact">Enquiry</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <p><i class="fas fa-envelope"></i> innovatehive7@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +91 7517326752</p>
+      <p><i class="fab fa-whatsapp"></i> +91 7517326752</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 All Rights Reserved by InnovateHive.</p>
+  </div>
+</footer>
+
+    <!-- Scripts -->
+    <!-- Scripts -->
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("active");
+        });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document.getElementById("nav-links").classList.remove("active");
+        });
+      });
+
+      // Add smooth scrolling to all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          if (this.getAttribute("href") !== "#") {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add fade-in animation to blog posts
+      const blogPosts = document.querySelectorAll(".blog-post");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      blogPosts.forEach((post) => {
+        observer.observe(post);
+      });
+
+      // Prevent horizontal scrolling
+      window.addEventListener("scroll", function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      });
+
+      // Reset scroll position on load
+      window.onload = function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn how digital marketing transforms businesses with memes, influencers, and data-driven strategies at InnovationHive Blog."
+    />
+    <title>InnovationHive Blog</title>
+     <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7.png') }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', filename='img/LOGO_BLUEAsset 7') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* General Styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+      }
+body {
+  background-color: #0e0e0e; /* dark background */
+  color: #e0e0e0; /* light text */
+  
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Navbar Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #000000;
+    padding: 15px 30px;
+    color: white;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.header-scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  flex: 1;
+  width: 180px;
+  left: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo img {
+    height: 150px;
+    width: auto;
+}
+
+/* Navigation styling */
+.nav-links {
+   flex: 2;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+}
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+.nav-links li a:hover {
+    color: #4facfe;
+}
+/* Navigation base styles */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  padding: 10px 0;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  list-style: none; /* ✅ Removes the dots */
+}
+
+/* Dropdown item styling */
+.dropdown-menu li {
+  padding: 8px 20px;
+}
+
+/* Links inside dropdown */
+.dropdown-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background: #333;
+  border-radius: 4px;
+}
+
+/* Show dropdown on hover with animation */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(10px); /* Slide down */
+}
+      /* Mobile Menu Toggle */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      /* Blog Section */
+      .blog-section {
+        padding: 30px 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        flex: 1;
+      }
+
+      .blog-section h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 15px;
+        color: #60b8e4;
+        line-height: 1.2;
+      }
+
+      .blog-section .subtitle {
+        font-size: 1rem;
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+    
+      .blog-post {
+        background-color: #1f1f1f;
+        color: #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .blog-post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 20px;
+      }
+
+      .blog-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #60b8e4;
+        line-height: 1.3;
+      }
+
+      .blog-content h3 {
+        font-size: 1.3rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #60b8e4;
+      }
+
+      .blog-content h4 {
+        font-size: 1.1rem;
+        margin-top: 15px;
+        margin-bottom: 8px;
+        color: #60b8e4;
+      }
+
+      .blog-content .meta {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .blog-content .author {
+        color: #60b8e4;
+        font-weight: bold;
+      }
+
+      .blog-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .blog-content ul {
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+
+      .blog-content ul li {
+        margin-bottom: 10px;
+      }
+
+      .blog-content .author-signature {
+        font-style: italic;
+        color:#60b8e4;
+        margin-top: 20px;
+      }
+
+      .blog-content .linkedin-link {
+        display: inline-block;
+        margin-top: 15px;
+        color: #60b8e4;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .blog-content .linkedin-link:hover {
+        color: #00bfff;
+      }
+
+      .blog-content .linkedin-link i {
+        margin-right: 8px;
+      }
+
+      .key-takeaways {
+        color: #000000;
+        background-color: #60b8e4;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 25px;
+      }
+
+      .key-takeaways h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      .key-takeaways ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .key-takeaways li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .key-takeaways li:before {
+        content: "•";
+        color: #004466;
+        font-weight: bold;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
+      }
+
+      /* Footer */
+      .dark-footer {
+  background-color: #0b0b0b;
+  color: #eee;
+  padding: 50px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  border-bottom: 1px solid #222;
+  padding-bottom: 30px;
+}
+
+.footer-column h4, .footer-column h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #4facfe;
+}
+
+.social-icons a {
+  color: #aaa;
+  font-size: 18px;
+  margin-right: 12px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #4facfe;
+}
+
+.footer-column p {
+  margin: 8px 0;
+}
+
+.footer-column i {
+  margin-right: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+      /* Animation for Fade-in */
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .blog-section h1 {
+          font-size: 1.8rem;
+        }
+
+        .blog-content h2 {
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 15px;
+        }
+
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo-container {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 15px;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li {
+          width: 100%;
+          padding: 5px 0;
+        }
+
+        .blog-section {
+          padding: 20px 10px;
+        }
+
+        .blog-section h1 {
+          font-size: 1.5rem;
+        }
+
+        .blog-content {
+          padding: 15px;
+        }
+
+        .blog-content h2 {
+          font-size: 1.2rem;
+        }
+
+        .blog-content h3 {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo img {
+          height: 40px;
+        }
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        .blog-section h1 {
+          font-size: 1.3rem;
+        }
+
+        .blog-section .subtitle {
+          font-size: 0.9rem;
+        }
+
+        .blog-content .meta {
+          font-size: 0.8rem;
+        }
+
+        .blog-content p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="logo-container">
+          <div class="logo animate-slide-in-left">
+      <img src="./static/images/LOGO_1.png" alt="InnovateHive Logo" />
+      </div>
+          <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li class="dropdown animate-slide-in-left">
+            <a href="/#services">Services</a>
+            
+          </li>
+          <li><a href="/#blog">Blog</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Blog Section -->
+    <section class="blog-section">
+      <div class="blog-container">
+        <h1>
+          From Memes to Millions: How Digital Marketing Runs the Modern Business
+          Circus
+        </h1>
+        <p class="subtitle">
+          Explore the latest trends, insights, and innovations in digital
+          marketing and modern business strategies.
+        </p>
+
+        <!-- Digital Marketing Blog Post -->
+        <div class="blog-post">
+          <div class="blog-image">
+            <img
+              src="./static/images/B-8.png"
+              alt="Digital Marketing Image"
+            />
+          </div>
+          <div class="blog-content">
+            <h2>
+              From Memes to Millions: How Digital Marketing Runs the Modern
+              Business Circus
+            </h2>
+            <p class="meta">
+              Published by
+              <span class="author">Nupur N. Kudtarkar</span>
+            </p>
+            <p>
+              Welcome to the Wild World of Digital Marketing! Hello everyone,
+              the world where business has totally transformed into a digital
+              circus, where brands have captured social media while carefully
+              balancing the line of engagement as well as attracting customers
+              like circus magicians. The days of boring billboards and
+              monotonous TV ads are over! Now, it’s all about viral tweets,
+              engaging influencer collabs, fan meetups, and AI-powered designs.
+              So, let’s dive into the fun-filled and chaotic data-driven world
+              of modern marketing, where we’ll see how digital marketing has
+              turned ordinary businesses into viral and trendy internet
+              sensations!
+            </p>
+            <h3>1. Social Media: Where Memes Pay the Bills!</h3>
+            <p>
+              Remember when social media was just used to stalk your high school
+              crush and post for likes and random comments? Well, now the tables
+              have turned, and the same platforms have become a battlefield
+              where brands compete for attention—one meme at a time! A single
+              viral meme can boost sales more than a million-dollar ad campaign.
+              Companies like Zomato and Swiggy have turned their Instagram reels
+              into comedy clubs, roasting each other or commenting something
+              funny on random posts to sneakily promote their brands. Remember
+              when a single tweet from Kylie Jenner wiped out $1.3 billion from
+              Snapchat’s value? That’s the power of social media influence!
+            </p>
+            <h3>
+              2. SEO & Content Marketing: The Nerds Who Secretly Run the
+              Internet
+            </h3>
+            <p>
+              Have you ever wondered how SEO (Search Engine Optimization) and
+              content marketing quietly work behind the scenes while social
+              media is loud and noisy? Imagine writing a blog post so good it
+              becomes your personal 24/7 sales assistant! That’s what SEO
+              does—it ensures your business pops up on Google whenever someone
+              searches for, say, “how to lose weight without working out” (we’ve
+              all Googled it!). Brands create YouTube shorts, videos, and
+              podcasts to grab attention and secure their place in this
+              ever-changing market. Nothing says "I'm a genius" like a blog post
+              with a headline that makes people forget to breathe!
+            </p>
+            <h3>
+              3. Influencers: Because Apparently, a Random Person with a Selfie
+              Stick Knows More About Your Life Than Your Own Mom!
+            </h3>
+            <p>
+              Forget Bollywood and Hollywood stars—now all you need is an
+              Instagram or TikTok dancer with a viral video, a ring light, and a
+              glow-up filter to promote your product! Brands like Kylie
+              Cosmetics and Crocs built their empires by sending free products
+              to influencers and letting social media work its magic. Why?
+              Because when your favorite YouTuber or Instagram star suggests a
+              face moisturizer that “changed their life,” you suddenly feel the
+              urge to buy it immediately. That’s the power of influencer
+              marketing!
+            </p>
+            <h3>4. Paid Ads & Data Magic: Turning Clicks into Cash!</h3>
+            <p>
+              Ever wondered why, after searching for a pair of shoes, Nike ads
+              start following you everywhere like a possessed soul? No, your
+              phone isn’t haunted—that’s the power of digital marketing.
+              Platforms like Facebook, Instagram, and Google use data-driven ads
+              to target you with laser precision. They know what you’re looking
+              for and flash ads until you finally give in and buy. It’s like
+              mind reading, but legal!
+            </p>
+            <h3>
+              Wrap-up: Digital Marketing is the New King, and SEO is the Crown!
+            </h3>
+            <p>
+              Whether you’re a small business or a giant corporation, one thing
+              is clear: if you’re not leveraging digital marketing, you’re
+              missing out on profits and visibility. From meme marketing to
+              influencer collabs and AI-powered ads, today’s marketing is
+              funnier, smarter, and sometimes a little creepy. So, the next time
+              an ad pops up for a product you want or a viral tweet catches your
+              eye, remember—there’s a genius behind it, turning clicks into
+              cash!
+            </p>
+            <p class="author-signature">- Nupur N. Kudtarkar</p>
+            <a
+              href="https://linkedin.com/in/nupur-kudtarkar-2881ab289"
+              target="_blank"
+              class="linkedin-link"
+            >
+              <i class="fab fa-linkedin"></i> Connect with me on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="dark-footer">
+  <div class="footer-inner">
+    <div class="footer-column">
+      <h4>Find Us On</h4>
+      <div class="social-icons">
+        <a href="https://x.com/innovatehive7"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/innovatehive.in/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/innovatehive-tech-solution/"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h4>About Us</h4>
+      <ul>
+        <li><a href="#about">Know Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#blog">Blogs</a></li>
+        <li><a href="#contact">Enquiry</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <p><i class="fas fa-envelope"></i> innovatehive7@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +91 7517326752</p>
+      <p><i class="fab fa-whatsapp"></i> +91 7517326752</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 All Rights Reserved by InnovateHive.</p>
+  </div>
+</footer>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("active");
+        });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document.getElementById("nav-links").classList.remove("active");
+        });
+      });
+
+      // Add smooth scrolling to all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          if (this.getAttribute("href") !== "#") {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add fade-in animation to blog posts
+      const blogPosts = document.querySelectorAll(".blog-post");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      blogPosts.forEach((post) => {
+        observer.observe(post);
+      });
+
+      // Prevent horizontal scrolling
+      window.addEventListener("scroll", function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      });
+
+      // Reset scroll position on load
+      window.onload = function () {
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      };
+    </script>
+  </body>
+</html>
