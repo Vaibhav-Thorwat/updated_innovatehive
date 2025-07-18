@@ -14,7 +14,7 @@ gspread==5.0.0
 oauth2client==4.1.3  # Note: oauth2client is deprecated; if possible migrate to google-auth
 
 # Environment & Deployment
-python-dotenv==0.19.2
+python-dotenv>=0.21.0
 gunicorn==20.1.0
 
 # Database (optional, for future)
