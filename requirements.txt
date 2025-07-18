@@ -26,10 +26,10 @@ psycopg2-binary==2.9.1
 Pillow>=10.3.0
 requests==2.26.0
 
-# Additional AI & NLP Libraries
+# AI & NLP
 langchain==0.3.0
+langchain-community==0.3.0
 langchain-google-genai==2.0.0
 faiss-cpu==1.8.0
 sentence-transformers==3.0.1
-faiss-cpu==1.7.4.post2
 
